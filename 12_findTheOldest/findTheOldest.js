@@ -1,25 +1,15 @@
 const findTheOldest = function(arr) {
-    let greatest=0;
-    const sortedArray=[];
+    let oldest=0;
+    let ageArray=[];
     for(obj of arr){
-        if (obj.yearOfDeath){
-            const age=obj.yearOfDeath-obj.yearOfBirth;
-            if (age>greatest){
-                greatest=age;
-                sortedArray.push(obj);
-            }
-        }else if (!obj.yearOfDeath){
-            const age= (new Date().getFullYear())-obj.yearOfBirth;
-            if (age>greatest){
-                greatest=age;
-                sortedArray.push(obj)
-
-            }
+        (obj.yearOfDeath) ? age=obj.yearOfDeath-obj.yearOfBirth : 
+        age= (new Date().getFullYear())-obj.yearOfBirth;
+        if (age>oldest){
+            oldest=age;
+            ageArray.unshift(obj);
         }
-     }
-     //sort array according to age
-     return sortedArray.reverse()[0]
-
+    }   
+     return ageArray[0];
 
     
 };
